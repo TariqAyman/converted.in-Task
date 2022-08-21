@@ -1,64 +1,65 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Converted.in Backend/Full stack Evaluation Task
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+- Time for task delivery will be 3 days, that doesn’t mean it will take all that
+time, it’s designed to take less than working day. Make sure to log the
+time you spent developing each sub task
+- Task delivery upload to your Github repo and reply to this email with the link
+- The development approach is left for you to use your best judgment ،
+however it might be good though if you shared your thoughts about the
+approach you have chosen and what else could be improved/implemented
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### TASK:
+Create an application where the admin can create a task(title, description,
+assigned_to_id, assigned_by_id) and assign it to any non-admin user. The Statistics
+table should hold the number of tasks assigned to each user.
+The application should contain three pages according to the following
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [x] Page 1: Task creation page contains the following input fields
+  - [x] Admin Name (dropdown)
+  - [x] title (text)
+  - [x] description (text area)
+  - [X] Assigned User (dropdown)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+After submitting the task creation form, redirect the user to the Task List page.
 
-## Learning Laravel
+- [x] Page 2: Task List page contains (title, description, assigned name, admin
+   name) paginated as 10 tasks per view
+- [x] Page 3: Statistics page holds user task count statistics (top 10 users with
+   highest tasks count)
+   - Required:
+     - [x] Create database using artisan command
+     - [x] Create seed for 10000 users, 100 admins
+     - [ ] Write tests (minimum 3)
+   - Bonus:
+     - [x] Update Statistics table using a background job.
+     - [ ] Confirm the test run in the github actions after each commit.
+     - [ ] Cache user list for displaying in the Task creation page.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-------------------------------------
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Requirments:
 
-## Laravel Sponsors
+- PHP 8.1 or later.
+- MySQL 5.7 or later.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## installation Steps
 
-### Premium Partners
+- Step 1: git clone url project.
+- Step 2: `composer install` for download the required packages.
+- Step 3: create database with name "converted_in_task"
+- Step 4: `cp .env.example .env` to copy env file.
+- Step 5: `php artisan key:generate` to generate new app key.
+- Step 6: `php artisan migrate` to run database migration.
+- Step 7: `php artisan db:seed` to run database seeder for create default user.
+- Step 8: `npm install && npm run build` for compiling your fresh scaffolding.
+- Step 9: `php artisan serve` to deploy the module
+- Step 10: `php artisan update-statistic` to save or update statistic
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### NOTE
 
-## Contributing
+if you get any errors in this steps, when seeding the database, related to existing data, please run the following:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- run `php artisan config:cache` to reset setting to is last good case.
+- run `chmod -R 777 storage` to give permissions to storage folder for read/wire actions.
+- run `chown www-data -R storage` for the same reason described above.
