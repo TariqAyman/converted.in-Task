@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_type',
     ];
 
     /**
@@ -41,4 +43,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @param $text
+     * @return void
+     */
+    public function setPasswordAttribute($text)
+    {
+        $this->attributes['password'] = Hash::make($text);
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'assigned_to_id');
+    }
+
+    public function manageTask()
+    {
+        return $this->hasMany(Task::class, 'assigned_by_id');
+    }
+
 }
