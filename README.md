@@ -30,7 +30,7 @@ After submitting the task creation form, redirect the user to the Task List page
    - Required:
      - [x] Create database using artisan command
      - [x] Create seed for 10000 users, 100 admins
-     - [ ] Write tests (minimum 3)
+     - [x] Write tests (minimum 3)
    - Bonus:
      - [x] Update Statistics table using a background job.
      - [ ] Confirm the test run in the github actions after each commit.
