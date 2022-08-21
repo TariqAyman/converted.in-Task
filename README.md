@@ -33,7 +33,7 @@ After submitting the task creation form, redirect the user to the Task List page
      - [x] Write tests (minimum 3)
    - Bonus:
      - [x] Update Statistics table using a background job.
-     - [ ] Confirm the test run in the github actions after each commit.
+     - [x] Confirm the test run in the github actions after each commit.
      - [ ] Cache user list for displaying in the Task creation page.
 
 -------------------------------------
@@ -55,6 +55,7 @@ After submitting the task creation form, redirect the user to the Task List page
 - Step 8: `npm install && npm run build` for compiling your fresh scaffolding.
 - Step 9: `php artisan serve` to deploy the module
 - Step 10: `php artisan update-statistic` to save or update statistic
+- Step 11: `php artisan test` to run tests.
 
 ### NOTE
 
