@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::resource('task', TaskController::class);
+
+    Route::get('getDatatable', [TaskController::class, 'getDatatable'])->name('getDatatable');
+
+    Route::get('statistic', [StatisticController::class, 'index'])->name('statistic');
 });
